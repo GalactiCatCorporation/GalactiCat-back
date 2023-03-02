@@ -1,10 +1,9 @@
-package com.galacticat.galacticat.bo;
+package com.galacticat.galacticat.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
-import java.text.DateFormat;
 import java.time.LocalDateTime;
 
 @Data
@@ -31,8 +30,5 @@ public class Vol {
     @JoinColumn(name = "CASTRONAUTE_ID")
     private Catstronaute pilote;
 
-    @OneToMany
-    @JoinColumn(name = "CASTRONAUTE_ID")
-    private Catstronaute passager;
 
 }

@@ -1,9 +1,7 @@
 package com.galacticat.galacticat;
 
-import com.galacticat.galacticat.bo.Catstronaute;
-import com.galacticat.galacticat.dal.CatstronauteDAO;
+import com.galacticat.galacticat.service.CatstronauteDAO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

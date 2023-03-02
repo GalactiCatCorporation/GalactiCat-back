@@ -1,4 +1,4 @@
-package com.galacticat.galacticat.bo;
+package com.galacticat.galacticat.model;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;

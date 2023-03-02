@@ -1,4 +1,4 @@
-package com.galacticat.galacticat.bo;
+package com.galacticat.galacticat.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
