@@ -3,6 +3,9 @@ package com.galacticat.galacticat.model;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 public class Catstronaute implements Serializable {
 
@@ -20,6 +23,9 @@ public class Catstronaute implements Serializable {
     @OneToOne
     @JoinColumn(name = "VAISSEAU_ID")
     private Vaisseau vaisseau;
+    @OneToMany
+    @JoinColumn(name = "VOL_ID")
+    private List<Vol> vol = new ArrayList<>();
 
     //private Vols = Vol[];
     public Catstronaute() {

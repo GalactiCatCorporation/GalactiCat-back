@@ -10,7 +10,7 @@ public class Vaisseau {
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
-    private Integer id;
+    private String id;
     private String nom;
     private String modele;
     private Integer nombrePlace;
@@ -18,18 +18,18 @@ public class Vaisseau {
     public Vaisseau() {
     }
 
-    public Vaisseau(Integer id, String nom, String modele, Integer nombrePlace) {
+    public Vaisseau(String id, String nom, String modele, Integer nombrePlace) {
         this.id = id;
         this.nom = nom;
         this.modele = modele;
         this.nombrePlace = nombrePlace;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 

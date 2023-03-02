@@ -1,22 +1,24 @@
 package com.galacticat.galacticat.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Data
-@Table (name = "planete")
-
-
-public class Planete {
+@Table(name = "messagerie")
+public class Messagerie {
 
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
+
     private String id;
-    private String nom ;
+    @OneToMany
+    @Column(name = "MESSAGE_ID")
+    private List<Message> message = new ArrayList<>();
+
 }
