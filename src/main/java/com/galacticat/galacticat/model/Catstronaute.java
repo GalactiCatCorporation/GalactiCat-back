@@ -27,6 +27,8 @@ public class Catstronaute implements UserDetails {
     private String pseudo;
     @Column
     private String password;
+    private String firstname;
+    private String lastname;
     @Column
     private String email;
     @Column
