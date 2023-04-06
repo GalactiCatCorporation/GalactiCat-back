@@ -24,21 +24,20 @@ public class Catstronaute implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column (unique = true, length = 15)
-    private String pseudo;
+
+    @Column (length = 254)
+    private String Bio;
     @Column
     private String password;
-    private String firstname;
-    private String lastname;
-    @Column
+
+    @Column (unique = true, length = 15)
     private String email;
     @Column
     private String grade;
     @Column
     private String imageProfilUrl;
-    @OneToOne
-    @JoinColumn(name = "VAISSEAU_ID")
-    private Vaisseau vaisseau;
+    @Column
+    private String vaisseau;
     @OneToMany
     @JoinColumn(name = "VOL_ID")
     private List<Vol> vol = new ArrayList<>();

@@ -22,14 +22,13 @@ public class Vol {
     private Planete depart;
     @OneToOne
     @JoinColumn(name = "PLANETE_ID_ARRIVEE")
-    private Planete arrivée;
+    private Planete arrivee;
     @OneToOne
     @JoinColumn(name = "PLANETE_ID_etape")
     private Planete etape;
     private LocalDateTime dateDepart;
-    @OneToOne
-    @JoinColumn(name = "VAISSEAU_ID")
-    private Vaisseau vaisseau;
+    @Column
+    private String vaisseau;
 
     @OneToOne
     @JoinColumn(name = "CASTRONAUTE_ID_PILOTE")
@@ -38,5 +37,4 @@ public class Vol {
     @OneToMany
     @JoinColumn(name= "CASTRONAUTE_ID_PASSAGERS")
     private List<Catstronaute> passager = new ArrayList<>();
-
 }
