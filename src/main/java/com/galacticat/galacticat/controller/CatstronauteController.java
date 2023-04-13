@@ -2,6 +2,7 @@ package com.galacticat.galacticat.controller;
 
 import com.galacticat.galacticat.model.Catstronaute;
 import com.galacticat.galacticat.repository.UserRepository;
+import com.galacticat.galacticat.request.CatstronauteUpdateRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -26,40 +27,27 @@ public class CatstronauteController {
     return userRepository.save(catstronaute);
   }
 
-  @PutMapping("/{catstronauteId}/vaisseau")
-  public ResponseEntity<Catstronaute> updateVaisseau(@PathVariable Integer catstronauteId, @RequestBody String vaisseau) {
+  @PutMapping("/{catstronauteId}")
+  public ResponseEntity<Catstronaute> updateCatstronaute(@PathVariable Integer catstronauteId, @RequestBody CatstronauteUpdateRequest updateRequest) {
+    System.out.println("test");
     Optional<Catstronaute> optionalCatstronaute = userRepository.findById(catstronauteId);
 
     if (optionalCatstronaute.isPresent()) {
       Catstronaute catstronaute = optionalCatstronaute.get();
-      catstronaute.setVaisseau(vaisseau);
-      Catstronaute updatedCatstronaute = userRepository.save(catstronaute);
-      return ResponseEntity.ok(updatedCatstronaute);
-    } else {
-      return ResponseEntity.notFound().build();
-    }
-  }
-  @PutMapping("/{catstronauteId}/bio")
-  public ResponseEntity<Catstronaute> updateBio(@PathVariable Integer catstronauteId, @RequestBody String bio) {
-    Optional<Catstronaute> optionalCatstronaute = userRepository.findById(catstronauteId);
 
-    if (optionalCatstronaute.isPresent()) {
-      Catstronaute catstronaute = optionalCatstronaute.get();
-      catstronaute.setBio(bio);
-      Catstronaute updatedCatstronaute = userRepository.save(catstronaute);
-      return ResponseEntity.ok(updatedCatstronaute);
-    } else {
-      return ResponseEntity.notFound().build();
-    }
-  }
+      if (updateRequest.getVaisseau() != null) {
+        catstronaute.setVaisseau(updateRequest.getVaisseau());
+      }
+      if (updateRequest.getBio() != null) {
+        catstronaute.setBio(updateRequest.getBio());
+      }
+      if (updateRequest.getEmail() != null) {
+        catstronaute.setEmail(updateRequest.getEmail());
+      }
+      if (updateRequest.getImageProfilUrl() != null) {
+        catstronaute.setImageProfilUrl(updateRequest.getImageProfilUrl());
+      }
 
-  @PutMapping("/{catstronauteId}/email")
-  public ResponseEntity<Catstronaute> updateEmail(@PathVariable Integer catstronauteId, @RequestBody String email) {
-    Optional<Catstronaute> optionalCatstronaute = userRepository.findById(catstronauteId);
-
-    if (optionalCatstronaute.isPresent()) {
-      Catstronaute catstronaute = optionalCatstronaute.get();
-      catstronaute.setEmail(email);
       Catstronaute updatedCatstronaute = userRepository.save(catstronaute);
       return ResponseEntity.ok(updatedCatstronaute);
     } else {
