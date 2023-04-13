@@ -13,9 +13,8 @@ import java.util.List;
 @Table(name="Vol")
 public class Vol {
     @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
     @OneToOne
     @JoinColumn(name = "PLANETE_ID_DEPART")
@@ -23,9 +22,8 @@ public class Vol {
     @OneToOne
     @JoinColumn(name = "PLANETE_ID_ARRIVEE")
     private Planete arrivee;
-    @OneToOne
-    @JoinColumn(name = "PLANETE_ID_etape")
-    private Planete etape;
+    @OneToMany(mappedBy = "vol", cascade = CascadeType.ALL)
+    private List<Etape> etapes = new ArrayList<>();
     private LocalDateTime dateDepart;
     @Column
     private String vaisseau;

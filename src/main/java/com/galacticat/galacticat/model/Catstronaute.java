@@ -39,7 +39,6 @@ public class Catstronaute implements UserDetails {
     @Column
     private String vaisseau;
     @OneToMany
-    @JoinColumn(name = "VOL_ID")
     private List<Vol> vol = new ArrayList<>();
 
     @Enumerated(EnumType.STRING)

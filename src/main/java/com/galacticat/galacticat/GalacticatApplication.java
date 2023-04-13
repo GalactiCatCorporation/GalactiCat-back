@@ -22,6 +22,6 @@ public class GalacticatApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-
+        //planeteService.createPlanets();
     }
 }
