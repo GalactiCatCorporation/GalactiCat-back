@@ -53,7 +53,19 @@ public class CatstronauteController {
     } else {
       return ResponseEntity.notFound().build();
     }
+
   }
+  @GetMapping("/{catstronauteId}")
+  public ResponseEntity<Catstronaute> getCatstronauteById(@PathVariable Integer catstronauteId) {
+    Optional<Catstronaute> optionalCatstronaute = userRepository.findById(catstronauteId);
+    if (optionalCatstronaute.isPresent()) {
+      Catstronaute catstronaute = optionalCatstronaute.get();
+      return ResponseEntity.ok(catstronaute);
+    } else {
+      return ResponseEntity.notFound().build();
+    }
+  }
+
 
   // Ajoutez d'autres méthodes pour gérer les requêtes HTTP (PUT, DELETE, etc.)
 }
